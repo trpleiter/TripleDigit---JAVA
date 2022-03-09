@@ -31,24 +31,32 @@ public class Main {
         System.out.println("De som van de getallen is: " + sumOfDigits);
         System.out.println("Het product van de getallen is: " + productOfDigits);
 
-        System.out.println("Vul drie getallen achter elkaar in");
-        int firstGuess = input.nextInt();
-        int secondGuess = input.nextInt();
-        int thirdGuess = input.nextInt();
+        int maxTimesToPlay = 5;
 
-        System.out.println("Je hebt de volgende getallen gekozen:");
-        System.out.println("Getal 1: " + firstGuess);
-        System.out.println("Getal 2: " + secondGuess);
-        System.out.println("Getal 3: " + thirdGuess);
+        for (int i = 0; i < maxTimesToPlay; i++) {
+            System.out.println("Vul drie getallen achter elkaar in");
+            int firstGuess = input.nextInt();
+            int secondGuess = input.nextInt();
+            int thirdGuess = input.nextInt();
 
-        boolean hasPlayerWon = firstDigit == firstGuess && secondDigit == secondGuess && thirdDigit == thirdGuess;
+            System.out.println("Je hebt de volgende getallen gekozen:");
+            System.out.println("Getal 1: " + firstGuess);
+            System.out.println("Getal 2: " + secondGuess);
+            System.out.println("Getal 3: " + thirdGuess);
 
-        if (hasPlayerWon)
-        {
-            System.out.println("Klink! Je hebt de cijfercombinatie goed, de kluis is gekraakt!");
-        }
-        else {
-            System.out.println("De cijfercombinatie is niet juist, de kluis zit nog dicht!");
+            boolean firstRightDigit = firstGuess == firstDigit || firstGuess == secondDigit || firstGuess == thirdDigit;
+            boolean secondRightDigit = secondGuess == firstDigit || secondGuess == secondDigit || secondGuess == thirdDigit;
+            boolean thirdRightDigit = thirdGuess == firstDigit || thirdGuess == secondDigit || thirdGuess == thirdDigit;
+
+            boolean hasPlayerWon = firstRightDigit == true && secondRightDigit == true && thirdRightDigit == true;
+
+            if (hasPlayerWon)
+            {
+                System.out.println("Klink! Je hebt de cijfercombinatie goed, de kluis is gekraakt!");
+            }
+            else {
+                System.out.println("De cijfercombinatie is niet juist, de kluis zit nog dicht!");
+            }
         }
     }
 }
